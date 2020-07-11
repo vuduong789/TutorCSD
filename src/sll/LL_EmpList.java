@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class LL_EmpList extends SLL {
     Scanner sc = null;
     public LL_EmpList(){
-        super();
+        super(); //call father's constructor class
         sc = new Scanner(System.in);
     }
     //Find an employee with a know code - Linear Search - Validation
@@ -25,8 +25,8 @@ public class LL_EmpList extends SLL {
         do{
             System.out.println("Enter employee's code: ");
             code = sc.nextLine().toUpperCase();
-            proceed = find(code) != null;
-            if(proceed == true){
+            proceed = find(code) != null; //duplicate code
+            if(proceed){
                 System.out.println("This code is duplicated!");
             }
         }while(proceed);
@@ -35,7 +35,7 @@ public class LL_EmpList extends SLL {
             System.out.println("Enter employee's name: ");
             name = sc.nextLine().trim();
             proceed = (name.length() == 0);
-            if(proceed == true){
+            if(proceed){
                 System.out.println("Employee's name must be inputted.");
             }
         }while(proceed);
@@ -93,6 +93,18 @@ public class LL_EmpList extends SLL {
 
         }
     }
+    //Remove an employee from tail
+    public SLL<Employee> deleteLastEmpl() {
+        SLL<Employee> tmp = null;
+        if (this.isEmpty()) {
+            System.out.println("List is empty.");
+        } else {
+            System.out.println("This employee has been removed.");
+            tmp = (SLL<Employee>) this.deleteFromTail();
+        }
+    return tmp;
+    }
+
     //print
     public void print(){
         if(this.isEmpty()){

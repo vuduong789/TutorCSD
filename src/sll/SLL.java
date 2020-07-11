@@ -68,23 +68,23 @@ public class SLL<T> {
     }
 
     public void delete(T el) {
-        if (isEmpty())
-            if (head == tail && el.equals(head.info)) //if only one
+        if (!isEmpty()) {
+            if (head == tail && el.equals(head.info)) {//if only one
                 head = tail = null; //node on the list
-            else if (el.equals(head.info)) //if more than one node in list
-                head = head.next; //and el is head node
-            else {
+            } else if (el.equals(head.info)) {//if more than one node in list
+                head = head.next; //and el is head node, el has been removed.
+            } else { //if have more than one node and el is not first
                 SLLNode<T> pred, tmp;
                 for (pred = head, tmp = head.next; tmp != null && !(tmp.info.equals(el));
-                     pred = pred.next, tmp = tmp.next)
-                    ;
-                if (tmp != null) {
-                    pred.next = tmp.next;
+                     pred = pred.next, tmp = tmp.next);
+                if (tmp != null) {//checked if tmp->next = null can not found el (el doesnt exist in list)
+                    pred.next = tmp.next; //Remove el by assigned tmp.next for pred.next
                     if (tmp == tail) { //if el is the last
                         tail = pred;
                     }
                 }
             }
+        }
     }
 
     public void printAll(){
