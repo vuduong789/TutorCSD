@@ -1,4 +1,4 @@
-package DLL;
+package dll;
 
 public class DLLNode <E> {
     private E element;

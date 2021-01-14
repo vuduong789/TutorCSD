@@ -1,4 +1,4 @@
-package DLL;
+package dll;
 
 public class DLL <E> {
     private DLLNode <E> header;
